@@ -4,7 +4,6 @@
   "description": "Laravel Echo library for beautiful Pusher and Socket.IO integration",
   "main": "dist/echo.js",
   "scripts": {
-    "postinstall": "npm run compile",
     "compile": "./node_modules/.bin/rollup -c",
     "prepublish": "npm run compile"
   },
