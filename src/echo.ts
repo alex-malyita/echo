@@ -29,6 +29,12 @@ class Echo {
     constructor(options: any) {
         this.options = options;
 
+        if (this.options.broadcaster == 'pusher') {
+            this.connector = new PusherConnector(this.options);
+        } else if (this.options.broadcaster == 'socket.io') {
+            this.connector = new SocketIoConnector(this.options);
+        }
+
         if (typeof Vue === 'function' && Vue.http) {
             this.registerVueRequestInterceptor();
         }
@@ -39,12 +45,6 @@ class Echo {
 
         if (typeof jQuery === 'function') {
             this.registerjQueryAjaxSetup();
-        }
-
-        if (this.options.broadcaster == 'pusher') {
-            this.connector = new PusherConnector(this.options);
-        } else if (this.options.broadcaster == 'socket.io') {
-            this.connector = new SocketIoConnector(this.options);
         }
     }
 
