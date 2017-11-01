@@ -120,7 +120,7 @@ export class SocketIoConnector extends Connector {
      * @return {string}
      */
     socketId(): string {
-        return this.socket.id;
+        return this.socket && this.socket.id;
     }
 
     /**
